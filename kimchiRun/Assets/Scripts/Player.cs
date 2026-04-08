@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
     private bool isGrounded = true;
     private int jumpCount = 0;
 
-    public int lives = 3;
-    private bool isInvincible = false;
+    
+    public bool isInvincible = false;
 
     public BoxCollider2D PlayerCollider;
 
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     }
 
-    void KillPlayer()
+    public void KillPlayer()
     {
         PlayerCollider.enabled = false;
         PlayerAnimator.enabled = false;
@@ -49,16 +49,13 @@ public class Player : MonoBehaviour
 
     void Hit()
     {
-        lives -= 1;
-        if(lives == 0)
-        {
-            KillPlayer();
-        }
+        GameManager.Instance.Lives -= 1;
+   
     }
 
     void Heal()
     {
-        lives = Mathf.Min(3, lives + 1);
+        GameManager.Instance.Lives = Mathf.Min(3, GameManager.Instance.Lives + 1);
     }
 
     void StartInvincible()

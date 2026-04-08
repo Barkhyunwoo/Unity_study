@@ -11,13 +11,18 @@ public class Spawer : MonoBehaviour
 
     
 
-    void Start()
+    void OnEnable() 
     {
         Invoke("Spawn", Random.Range(minSpawnDelay, maxSpawnDelay));
 
     }
 
-   void Spawn()
+    private void OnDisable()
+    {
+        CancelInvoke();
+    }
+
+    void Spawn()
     {
         var randomObject = gameObjects[Random.Range(0, gameObjects.Length)];
         Instantiate(randomObject, transform.position, Quaternion.identity);
