@@ -733,6 +733,7 @@ MonoBehaviour:
   JumpForce: 12
   PlayerRigidBody: {fileID: 387962278}
   PlayerAnimator: {fileID: 387962275}
+  PlayerSpriteRenderer: {fileID: 387962276}
   isInvincible: 0
   PlayerCollider: {fileID: 387962279}
 --- !u!1 &389222810

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [Header("References")]
     public Rigidbody2D PlayerRigidBody;
     public Animator PlayerAnimator;
+    public SpriteRenderer PlayerSpriteRenderer;
 
     private bool isGrounded = true;
     private int jumpCount = 0;
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour
     public bool isInvincible = false;
 
     public BoxCollider2D PlayerCollider;
+
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +31,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount != 2)
         {
+            PlayerRigidBody.linearVelocity = new Vector2(PlayerRigidBody.linearVelocity.x, 0f);
             PlayerRigidBody.AddForceY(JumpForce, ForceMode2D.Impulse);
            
             isGrounded = false;
@@ -50,7 +54,16 @@ public class Player : MonoBehaviour
     void Hit()
     {
         GameManager.Instance.Lives -= 1;
-   
+        PlayerSpriteRenderer.color = Color.red;
+
+        CancelInvoke("Normal");
+        Invoke("Normal", 0.5f);
+
+    }
+
+    void Normal()
+    {
+        PlayerSpriteRenderer.color = Color.white;
     }
 
     void Heal()
@@ -61,11 +74,17 @@ public class Player : MonoBehaviour
     void StartInvincible()
     {
         isInvincible = true;
+        Color playerColor = PlayerSpriteRenderer.color;
+        playerColor.a = 0.5f;
+        PlayerSpriteRenderer.color = playerColor;
         Invoke("StopInvincible", 5f);
     }
 
     void StopInvincible()
     {
+        Color playerColor = PlayerSpriteRenderer.color;
+        playerColor.a = 1f;
+        PlayerSpriteRenderer.color = playerColor;
         isInvincible = false;
     }
 
