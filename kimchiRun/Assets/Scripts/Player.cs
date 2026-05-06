@@ -54,7 +54,9 @@ public class Player : MonoBehaviour
     void Hit()
     {
         GameManager.Instance.Lives -= 1;
-        PlayerSpriteRenderer.color = Color.red;
+        Color hitColor = Color.red;
+        if (isInvincible) hitColor.a = 0.5f;
+        PlayerSpriteRenderer.color = hitColor;
 
         CancelInvoke("Normal");
         Invoke("Normal", 0.5f);
@@ -63,12 +65,22 @@ public class Player : MonoBehaviour
 
     void Normal()
     {
-        PlayerSpriteRenderer.color = Color.white;
+        Color normalColor = Color.white;
+        if (isInvincible) normalColor.a = 0.5f;
+        PlayerSpriteRenderer.color = normalColor;
     }
 
     void Heal()
     {
+        if(GameManager.Instance.Lives < 3){
+            Color healColor = Color.green;
+            if (isInvincible) healColor.a = 0.5f;
+            PlayerSpriteRenderer.color = healColor;
+            CancelInvoke("Normal");
+            Invoke("Normal", 0.5f);
+        }
         GameManager.Instance.Lives = Mathf.Min(3, GameManager.Instance.Lives + 1);
+        
     }
 
     void StartInvincible()

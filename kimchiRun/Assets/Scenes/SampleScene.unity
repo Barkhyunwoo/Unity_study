@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 97408036}
   m_Layer: 0
   m_Name: Food Spawner
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawer
   minSpawnDelay: 3
   maxSpawnDelay: 5
+  speedIncreaseRate: 0.05
   gameObjects:
   - {fileID: 5678309315943767268, guid: 349b289869623004dade097c30a618af, type: 3}
   - {fileID: 5678309315943767268, guid: 871e1e0bc7a26904dba7c7577ba7c2cc, type: 3}
@@ -669,7 +670,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
@@ -768,6 +769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawer
   minSpawnDelay: 7
   maxSpawnDelay: 10
+  speedIncreaseRate: 0.05
   gameObjects:
   - {fileID: 3996451627412124879, guid: 0531b3f25bc081147bd551ef52613913, type: 3}
 --- !u!4 &389222812
@@ -1045,11 +1047,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1004287285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -367, y: 206}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 20, y: -10}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &598286909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1566,7 +1568,7 @@ GameObject:
   - component: {fileID: 1318686083}
   m_Layer: 0
   m_Name: Building Spawner
-  m_TagString: Untagged
+  m_TagString: building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1585,6 +1587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawer
   minSpawnDelay: 3
   maxSpawnDelay: 5
+  speedIncreaseRate: 0.05
   gameObjects:
   - {fileID: 5817300478330297587, guid: 0a09d3e058227984b9021f797a3130a2, type: 3}
   - {fileID: 5817300478330297587, guid: dcaeff1292bbb074da11cbaa54a0ea41, type: 3}
@@ -2178,7 +2181,7 @@ GameObject:
   - component: {fileID: 1963617707}
   m_Layer: 0
   m_Name: Enemy Spawner
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2197,6 +2200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawer
   minSpawnDelay: 1
   maxSpawnDelay: 3
+  speedIncreaseRate: 0.05
   gameObjects:
   - {fileID: 8389060578319737736, guid: ab1c6a06292b3984eb72643c50b5b897, type: 3}
   - {fileID: 9014703818177850481, guid: 852c07be3002efe40abf58ada1a406f8, type: 3}
