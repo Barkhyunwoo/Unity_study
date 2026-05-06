@@ -23,6 +23,7 @@ public class BackgroundScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         // GameManager가 존재하는지 먼저 확인
         if (GameManager.Instance != null)
         {
@@ -47,6 +48,7 @@ public class BackgroundScroll : MonoBehaviour
             // 만약 씬에 GameManager가 없다면 기본적으로 속도가 증가하도록 처리
             currentSpeed += IncreaseSpeed * Time.deltaTime;
         }
+        */
 
         // 계산된 currentSpeed를 바탕으로 배경 텍스처를 스크롤합니다.
         meshRenderer.material.mainTextureOffset += new Vector2(currentSpeed * Time.deltaTime, 0);
