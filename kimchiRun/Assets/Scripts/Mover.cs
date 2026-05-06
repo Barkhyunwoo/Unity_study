@@ -15,7 +15,7 @@ public class Mover : MonoBehaviour
     void Update()
     {
         transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-        moveSpeed += speedIncreaseRate * Time.deltaTime; // 매 프레임마다 속도 증가
+        //moveSpeed += speedIncreaseRate * Time.deltaTime; // 매 프레임마다 속도 증가
         Debug.Log("현재 스크롤 속도: " + speedIncreaseRate);
     }
 }
