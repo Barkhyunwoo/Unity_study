@@ -54,50 +54,46 @@ public class Player : MonoBehaviour
     void Hit()
     {
         GameManager.Instance.Lives -= 1;
-        Color hitColor = Color.red;
-        if (isInvincible) hitColor.a = 0.5f;
-        PlayerSpriteRenderer.color = hitColor;
+        PlayerSpriteRenderer.color = Color.red;
 
         CancelInvoke("Normal");
         Invoke("Normal", 0.5f);
-
     }
 
     void Normal()
     {
-        Color normalColor = Color.white;
-        if (isInvincible) normalColor.a = 0.5f;
-        PlayerSpriteRenderer.color = normalColor;
+        if (isInvincible)
+        {
+            PlayerSpriteRenderer.color = new Color(1f, 0.8f, 0f) * 2.5f; // 강도를 2.5배 높인 쨍한 HDR 황금색
+        }
+        else
+        {
+            PlayerSpriteRenderer.color = Color.white;
+        }
     }
 
     void Heal()
     {
-        if(GameManager.Instance.Lives < 3){
-            Color healColor = Color.green;
-            if (isInvincible) healColor.a = 0.5f;
-            PlayerSpriteRenderer.color = healColor;
+        if (GameManager.Instance.Lives < 3)
+        {
+            PlayerSpriteRenderer.color = Color.green;
             CancelInvoke("Normal");
             Invoke("Normal", 0.5f);
         }
         GameManager.Instance.Lives = Mathf.Min(3, GameManager.Instance.Lives + 1);
-        
     }
 
     void StartInvincible()
     {
         isInvincible = true;
-        Color playerColor = PlayerSpriteRenderer.color;
-        playerColor.a = 0.5f;
-        PlayerSpriteRenderer.color = playerColor;
+        PlayerSpriteRenderer.color = new Color(1f, 0.8f, 0f) * 2.5f; // 강도를 2.5배 높인 쨍한 HDR 황금색
         Invoke("StopInvincible", 5f);
     }
-
+    
     void StopInvincible()
     {
-        Color playerColor = PlayerSpriteRenderer.color;
-        playerColor.a = 1f;
-        PlayerSpriteRenderer.color = playerColor;
         isInvincible = false;
+        Normal();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

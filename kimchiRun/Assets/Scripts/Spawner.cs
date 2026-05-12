@@ -36,7 +36,6 @@ public class Spawer : MonoBehaviour
     {
         if (GameManager.Instance != null && GameManager.Instance.State == GameState.Playing)
         {
-            // 태그가 "Enemy"인 스포너일 때만 딜레이를 감소시킵니다.
             if (gameObject.CompareTag("enemy") || gameObject.CompareTag("building"))
             {
                 // Time.deltaTime을 곱해 매 초마다 speedIncreaseRate만큼 일정하게 줄어들도록 합니다.
